@@ -7,6 +7,7 @@ Created on Thu Mar 12 21:57:06 2020
 """
 from flask import Flask, url_for
 from markupsafe import escape
+from flask import request
 
 app = Flask(__name__)
 
@@ -45,6 +46,8 @@ def projects():
 def about():
     return 'The about page'
 '''
+
+'''
 #URL BUILDING
 @app.route('/')
 def index():
@@ -63,8 +66,17 @@ with app.test_request_context():
     print(url_for('login'))
     print(url_for('login', next='/'))
     print(url_for('profile', username='John Doe'))
+'''
 
+'''
 # HTTP METHODS
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return do_the_login()
+    else:
+        return show_the_login_form()
+'''
 
 
 # STATIC FILES
